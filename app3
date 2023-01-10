@@ -1,0 +1,33 @@
+const { read } = require('fs');
+
+const fs = require('fs').promises;
+
+async function readFile(filePath){
+    try {
+        const data = await fs.readFile(filePath);
+        console.log(data.toString());
+        //writeFile(data.toString());
+        appendFile(data.toString());
+    } catch (error) {
+        console.error('Got an error ${error.message}');
+    }
+}
+
+async function writeFile(linetext) {
+    try {
+        await fs.writeFile('dom.txt', linetext);
+    }  catch (error) {
+     }  
+};
+
+async function appendFile(textToAdd) {
+    try {
+        await fs.appendFile('dom.txt', textToAdd);
+    } catch(error) {
+        console.error('Got it ${error.message}');
+    }
+}
+
+
+readFile('main.tf');
+readFile('provider.tf');

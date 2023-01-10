@@ -1,4 +1,13 @@
-const { read } = require('fs');
+//const { read } = require('fs');
+
+var buildDirectory = 'C:\\software\\terraform_templates\\';
+var workingDirectory = 'C:\\software\\terraform_templates\\';
+
+var main_test = buildDirectory + 'main.txt';
+var provider = buildDirectory + 'provider.txt';
+
+var main_tf_templet = workingDirectory + 'main.tf';
+
 
 const fs = require('fs').promises;
 
@@ -9,7 +18,7 @@ async function readFile(filePath){
         //writeFile(data.toString());
         appendFile(data.toString());
     } catch (error) {
-        console.error('Got an error ${error.message}');
+        console.error('Got an error  ${error.message}');
     }
 }
 
@@ -22,12 +31,13 @@ async function writeFile(linetext) {
 
 async function appendFile(textToAdd) {
     try {
-        await fs.appendFile('dom.txt', textToAdd);
+        await fs.appendFile(main_tf_templet, textToAdd);
     } catch(error) {
         console.error('Got it ${error.message}');
     }
 }
 
 
-readFile('main.tf');
-readFile('provider.tf');
+readFile(main_test);
+readFile(provider);
+
